@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,24 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-    
+    <h1 class="heading">Todo List</h1>
+    <form id="form" class="form container">
+        <input 
+        type="text" 
+        class="todo-title-input" 
+        id="todo-title-input" 
+        placeholder="Todo title">
+        <button class="todo-form-button" type="submit">Add</button>
+    </form>
+    <ul class="todos container">
+        <li class="todo" data-id="1">
+            <span class="todo-title">Todo 1</span>
+            <div class="toggle-delete">
+                <input type="checkbox" name="completed" class="todo-checkbox">
+                <button class="delete-todo-button">x</button>
+            </div>
+        </li>
+    </ul>
 </body>
+
 </html>
