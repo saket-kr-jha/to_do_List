@@ -34,5 +34,19 @@ const store = {
     storeProxy.todos = [...storeProxy.todos, newTodo];
   }
 
+  function deleteTodo(id){
+    storeProxy.todos = storeProxy.todos.filter((todo) => todo.id != id)
+  }
+
+  function toggleCompleted(id, completed){
+    storeProxy.todo = storeProxy.todo.map((todo)=>{
+        if(todo.id === id){
+            return { ...todo, completed: completed}
+        } else{
+            return todo;
+        }
+    })
+  }
+
   export default storeProxy;
-  export {addTodo};
+  export {addTodo, deleteTodo, toggleCompleted};

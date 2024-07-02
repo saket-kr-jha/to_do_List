@@ -1,5 +1,5 @@
 import render from "./render.js";
-import { addTodo } from "./store.js";
+import { addTodo, deleteTodo, toggleCompleted } from "./store.js";
 
 window.addEventListener("todoschange", () =>{
     render();
@@ -13,4 +13,23 @@ form.addEventListener("submit", (e)=>{
     const todoTitle = todoTitleInput.value;
     const newTodo = {id: crypto.randomUUID(), title:todoTitle , completed:false}
     addTodo(newTodo);
+})
+
+const todos = document.querySelector(".todos");
+
+todos.addEventListener("click", (e)=>{
+    const target = e.target;
+    if(target.classList.contains("delete-todo-button")){
+        const id = target.closest(".todo").dataset.id;
+        deleteTodo(id);
+    }
+})
+
+todos.addEventListener("change", (e)=>{
+    const target = e.target;
+    if(target.classList.contains("todo-checkbox")){
+        const id = target.closest(".todo").dataset.id;
+        const completed = target.checked;
+        toggleCompleted(id, completed)
+    }
 })
