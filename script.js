@@ -4,7 +4,14 @@ import { addTodo, deleteTodo, toggleCompleted } from "./store.js";
 window.addEventListener("todoschange", () =>{
     render();
 })
-render()
+
+const storeFromLocal = JSON.parse(localStorage.getItem("store"));
+if(storeFromLocal.todos.length > 0){
+    store.todos = storeFromLocal.todos;
+} else {
+    localStorage.setItem("store", JSON.stringify(store));
+    render();
+}
 
 const form = document.querySelector("#form");
 const todoTitleInput = document.querySelector(".todo-title-input");

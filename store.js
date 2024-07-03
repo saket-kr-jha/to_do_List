@@ -24,6 +24,7 @@ const store = {
         if (property == "todos") {
             window.dispatchEvent(new Event("todoschange"));
           }
+          localStorage.setItem("store", JSON.stringify(store));
           return true;
     },
   }
