@@ -1,17 +1,20 @@
 import render from "./render.js";
+import store from "./store.js";
 import { addTodo, deleteTodo, toggleCompleted } from "./store.js";
 
 window.addEventListener("todoschange", () =>{
     render();
 })
-
-const storeFromLocal = JSON.parse(localStorage.getItem("store"));
-if(storeFromLocal.todos.length > 0){
-    store.todos = storeFromLocal.todos;
+// try to get store from localstorage
+const storeFromLocalStorage = JSON.parse(localStorage.getItem("store"));
+if (storeFromLocalStorage?.todos.length > 0) {
+  store.todos = storeFromLocalStorage.todos;
 } else {
-    localStorage.setItem("store", JSON.stringify(store));
-    render();
+  localStorage.setItem("store", JSON.stringify(store));
+  render();
 }
+
+// form get
 
 const form = document.querySelector("#form");
 const todoTitleInput = document.querySelector(".todo-title-input");

@@ -19,15 +19,15 @@ const store = {
         return target[property]
     },
 
-    set(target, property, value){
-        target[property]= value;
-        if (property == "todos") {
-            window.dispatchEvent(new Event("todoschange"));
-          }
-          localStorage.setItem("store", JSON.stringify(store));
-          return true;
+    set(target, property, value) {
+      target[property] = value;
+      if (property == "todos") {
+        window.dispatchEvent(new Event("todoschange"));
+      }
+      localStorage.setItem("store", JSON.stringify(store));
+      return true;
     },
-  }
+  };
 
   const storeProxy = new Proxy(store, storeHandler)
 
